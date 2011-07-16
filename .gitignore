@@ -1,0 +1,34 @@
+#
+#local user and generated files
+#
+
+*.user
+*.suo
+*.eml
+*.log
+*.log.*
+*.docstates
+UpgradeLog.XML
+_ReSharper*/
+_UpgradeReport_Files/
+*.vspscc
+*.vssscc
+
+#
+# bin-directories
+#
+bin/
+
+#
+# obj-directories
+#
+obj/
+
+
+#
+# Other files
+#
+*.cer
+*.crt
+
+/TestResults
