@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{41BA1B49-A854-4C1D-BD47-1E693A3CE5AA}"
+	ProjectSection(SolutionItems) = preProject
+		lib\Microsoft.IdentityModel.dll = lib\Microsoft.IdentityModel.dll
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcMusicStoreAdfs", "MvcMusicStoreAdfs\MvcMusicStoreAdfs.csproj", "{DB459FB1-221A-4160-B9AA-E300C9E8B804}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MVC3", "MVC3", "{284CCAF3-CFF4-4990-9C67-51FDA5D38688}"
+	ProjectSection(SolutionItems) = preProject
+		lib\MVC3\Microsoft.Web.Infrastructure.dll = lib\MVC3\Microsoft.Web.Infrastructure.dll
+		lib\MVC3\System.Web.Helpers.dll = lib\MVC3\System.Web.Helpers.dll
+		lib\MVC3\System.Web.Mvc.dll = lib\MVC3\System.Web.Mvc.dll
+		lib\MVC3\System.Web.Razor.dll = lib\MVC3\System.Web.Razor.dll
+		lib\MVC3\System.Web.WebPages.Deployment.dll = lib\MVC3\System.Web.WebPages.Deployment.dll
+		lib\MVC3\System.Web.WebPages.dll = lib\MVC3\System.Web.WebPages.dll
+		lib\MVC3\System.Web.WebPages.Razor.dll = lib\MVC3\System.Web.WebPages.Razor.dll
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DB459FB1-221A-4160-B9AA-E300C9E8B804}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB459FB1-221A-4160-B9AA-E300C9E8B804}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB459FB1-221A-4160-B9AA-E300C9E8B804}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB459FB1-221A-4160-B9AA-E300C9E8B804}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{284CCAF3-CFF4-4990-9C67-51FDA5D38688} = {41BA1B49-A854-4C1D-BD47-1E693A3CE5AA}
+	EndGlobalSection
+EndGlobal
