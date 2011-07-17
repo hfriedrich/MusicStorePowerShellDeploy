@@ -52,7 +52,7 @@ namespace MvcMusicStoreAdfs.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Load(new RepositoryModule());
+            kernel.Load(new RepositoryModule(), new UserModule());
         }        
     }
 }

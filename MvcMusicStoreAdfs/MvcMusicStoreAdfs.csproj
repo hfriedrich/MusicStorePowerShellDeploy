@@ -121,7 +121,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActionFilters\RequiresAdminUserAttribute.cs" />
     <Compile Include="App_Start\NinjectMVC3.cs" />
+    <Compile Include="Claim.cs" />
     <Compile Include="Controllers\CheckoutController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
@@ -141,6 +143,7 @@
     <Compile Include="Models\OrderDetail.cs" />
     <Compile Include="Models\SampleData.cs" />
     <Compile Include="Models\ShoppingCart.cs" />
+    <Compile Include="MusicStoreClaimTypes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RepositoryModule.cs" />
     <Compile Include="Repository\AlbumRepository.cs" />
@@ -155,6 +158,8 @@
     <Compile Include="Repository\IPersistOrders.cs" />
     <Compile Include="Repository\OrderRepository.cs" />
     <Compile Include="Repository\RavenPersister.cs" />
+    <Compile Include="User.cs" />
+    <Compile Include="UserModule.cs" />
     <Compile Include="ViewModels\ShoppingCartRemoveViewModel.cs" />
     <Compile Include="ViewModels\ShoppingCartViewModel.cs" />
   </ItemGroup>

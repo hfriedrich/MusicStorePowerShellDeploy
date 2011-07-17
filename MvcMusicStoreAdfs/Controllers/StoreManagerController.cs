@@ -1,10 +1,12 @@
 ﻿using System.Web.Mvc;
+using MvcMusicStoreAdfs.ActionFilters;
 using MvcMusicStoreAdfs.Models;
 using MvcMusicStoreAdfs.Repository;
 
 namespace MvcMusicStoreAdfs.Controllers
 {
 //    [Authorize(Roles = "Administrator")]
+    [RequiresAdminUser]
     public class StoreManagerController : Controller
     {
         private readonly IPersistAlbums _albumPersister;
