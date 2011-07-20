@@ -21,7 +21,7 @@ namespace MvcMusicStoreAdfs.ActionFilters
         {
             if (User.Name.EndsWith(AdministratorUserName)) return;
 
-            filterContext.Result = new ViewResult { ViewName = "Error" };
+            filterContext.Result = new ViewResult { ViewName = "NoAccess" };
             filterContext.HttpContext.Response.StatusCode = (int)HttpStatusCode.Forbidden;
         }
     }
