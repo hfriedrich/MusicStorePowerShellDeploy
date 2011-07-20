@@ -15,10 +15,6 @@ namespace MvcMusicStore.Controllers
             _albumPersister = albumPersister;
         }
 
-
-        //
-        // GET: /Store/
-
         public ActionResult Index()
         {
             var genres = _genreReader.LoadAll();
@@ -26,27 +22,16 @@ namespace MvcMusicStore.Controllers
             return View(genres);
         }
 
-        //
-        // GET: /Store/Browse?genre=Disco
-
         public ActionResult Browse(string genre)
         {
-            // Retrieve Genre and its Associated Albums from database
             var loadedGenre = _genreReader.LoadByName(genre);
             loadedGenre.Albums =_albumPersister.LoadAlbumsForGenre(loadedGenre.Id).ToList();
-
-//            var genreModel = storeDB.Genres.Include("Albums")
-//                .Single(g => g.Name == genre);
 
             return View(loadedGenre);
         }
 
-        //
-        // GET: /Store/Details/5
-
         public ActionResult Details(string id)
         {
-//            var album = storeDB.Albums.Find(id);
             var album = _albumPersister.Load(id);
             if (album.ValueMissing)
             {
@@ -55,13 +40,9 @@ namespace MvcMusicStore.Controllers
             return View(album.Value);
         }
 
-        //
-        // GET: /Store/GenreMenu
-
         [ChildActionOnly]
         public ActionResult GenreMenu()
         {
-//            var genres = storeDB.Genres.ToList();
             var genres = _genreReader.LoadAll();
 
             return PartialView(genres);

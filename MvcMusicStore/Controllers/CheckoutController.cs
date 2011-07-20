@@ -6,7 +6,6 @@ using MvcMusicStore.Repository;
 
 namespace MvcMusicStore.Controllers
 {
-//    [Authorize]
     public class CheckoutController : Controller
     {
         private readonly IPersistOrders _orderPersister;
@@ -18,16 +17,10 @@ namespace MvcMusicStore.Controllers
 
         const string PromoCode = "FREE";
 
-        //
-        // GET: /Checkout/AddressAndPayment
-
         public ActionResult AddressAndPayment()
         {
             return View();
         }
-
-        //
-        // POST: /Checkout/AddressAndPayment
 
         [HttpPost]
         public ActionResult AddressAndPayment(FormCollection values)
@@ -47,12 +40,8 @@ namespace MvcMusicStore.Controllers
                     order.Username = User.Identity.Name;
                     order.OrderDate = DateTime.Now;
 
-                    //Save Order
-//                    storeDB.Orders.Add(order);
-//                    storeDB.SaveChanges();
                     _orderPersister.Store(order);
 
-                    //Process the order
                     var cart = ShoppingCart.GetCart(this.HttpContext);
                     cart.CreateOrder(order);
 
@@ -63,32 +52,17 @@ namespace MvcMusicStore.Controllers
             }
             catch
             {
-                //Invalid - redisplay with errors
                 return View(order);
             }
         }
 
-        //
-        // GET: /Checkout/Complete
-
         public ActionResult Complete(string id)
         {
-            // Validate customer owns this order
-//            bool isValid = storeDB.Orders.Any(
-//                o => o.Id == id &&
-//                o.Username == User.Identity.Name);  
-            bool isValid = _orderPersister.LoadAll().Any(
+            var isValid = _orderPersister.LoadAll().Any(
                 o => o.Id == id &&
                 o.Username == User.Identity.Name);
 
-            if (isValid)
-            {
-                return View(id);
-            }
-            else
-            {
-                return View("Error");
-            }
+            return View(isValid ? id : "Error");
         }
     }
 }
