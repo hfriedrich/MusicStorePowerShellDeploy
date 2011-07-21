@@ -56,7 +56,6 @@ Function CreateSite($siteName, $physicalSitePath, $ipAddress, $enabelSsl, $port,
 	if(ExistsSite($siteName)){
 		Remove-Website -Name $siteName
 		CheckForErrors
-		#return
 	}
 	if(! (Test-Path $physicalSitePath)){
 		New-Item $physicalSitePath -ItemType directory
