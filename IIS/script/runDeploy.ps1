@@ -24,7 +24,7 @@
 	[ValidateNotNullOrEmpty()]
 	$appPoolName = $null,
 	
-	[parameter(Mandatory=$true, HelpMessage="Subject of the certificate for the web application site")]
+	[parameter(Mandatory=$false, HelpMessage="Subject of the certificate for the web application site")]
 	[ValidateNotNullOrEmpty()]
 	$certificateSubject = $null,
 	

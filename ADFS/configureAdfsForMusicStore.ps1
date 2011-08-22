@@ -1,7 +1,7 @@
-﻿$adfsHostName = 'WIN-IA6KB8UL431.da.domain.test'
+﻿$adfsHostName = 'adfs.bekk.Fagdag2011.no'
 $relyingPartyTrustName = 'MvcMusicStoreTest'
-$relyingPartyTrustIdentifier = 'https://win-ia6kb8ul431.da.domain.test:83'
-$adfsCertificateSubject = 'WIN-IA6KB8UL431.da.domain.test'
+$relyingPartyTrustIdentifier = 'https://web.bekk.Fagdag2011.no:83'
+$adfsCertificateSubject = 'adfs.bekk.Fagdag2011.no'
 
 $command = '.\configureAdfs.ps1 -adfsHostName $adfsHostName -relyingPartyTrustName $relyingPartyTrustName -relyingPartyTrustIdentifier $relyingPartyTrustIdentifier -communicationCertificateSubject $adfsCertificateSubject -tokenDecryptingCertificateSubject $adfsCertificateSubject -tokenSigningCertificateSubject $adfsCertificateSubject'
 Invoke-Expression $command
