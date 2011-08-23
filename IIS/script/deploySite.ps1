@@ -1,8 +1,8 @@
 ﻿Function DeployWebApplicationSite($siteName, $physicalSitePath, $ipAddress, $port, $hostName, $appPoolName, $appPoolUserAccountName, $appPoolUserAccountPassword, $certificateSubject, $siteDeployPackagePath, $MSDeploy){
+	$enabelSsl = ![string]::IsNullOrEmpty($certificateSubject)
 	CreateAppPool $appPoolName
 	SetAppPoolRuntimeVersion $appPoolName
 	SetAppPoolIdentity $appPoolName $appPoolUserAccountName $appPoolUserAccountPassword
-	$enabelSsl = ![string]::IsNullOrEmpty($certificateSubject)
 	CreateSite $siteName $physicalSitePath $ipAddress $enabelSsl $port $appPoolName $certificateSubject
 	
 	.$MSDeploy -verb:sync -source:package=$siteDeployPackagePath -dest:auto -setParam:"kind='ProviderPath',scope='IisApp',value=$siteName"
@@ -12,7 +12,7 @@
 Function DeployRavenDbSite($siteName, $physicalSitePath, $ipAddress, $port, $hostName, $appPoolName, $appPoolUserAccountName, $appPoolUserAccountPassword, $siteContentSourcePath, $MSDeploy){
 	CreateAppPool $appPoolName
 	SetAppPoolRuntimeVersion $appPoolName
-		SetAppPoolIdentity $appPoolName $appPoolUserAccountName $appPoolUserAccountPassword
+	SetAppPoolIdentity $appPoolName $appPoolUserAccountName $appPoolUserAccountPassword
 	CreateSite $siteName $physicalSitePath $ipAddress $false $port $appPoolName $null
 
 	.$MSDeploy -verb:sync -source:contentPath=$siteContentSourcePath -dest:contentPath=$physicalSitePath
@@ -40,7 +40,7 @@ Function SetAppPoolRuntimeVersion ($appPoolName){
 	CheckForErrors
 }
 
-Function SetAppPoolIdentity ($appPoolName, $appPoolUserAccountName, $appPoolUserAccountPassword){
+Function SetAppPoolIdentity ($appPoolName, $appPoolUserAccountName, $appPoolUserAccountPassword, $enabelSsl){
 	Write-Host
 	Write-Host "Setting identity of the application pool"$appPoolName" to "$appPoolUserAccountName -ForegroundColor Yellow
 	
@@ -50,6 +50,10 @@ Function SetAppPoolIdentity ($appPoolName, $appPoolUserAccountName, $appPoolUser
 	CheckForErrors
 	Set-WebConfigurationProperty -Filter "/system.applicationHost/applicationPools/add[@name='$appPoolName']/processModel" -PSPath 'IIS:\' -name password -value (ConvertToPlainText $appPoolUserAccountPassword)
 	CheckForErrors	
+	if($enabelSsl){
+		Set-WebConfigurationProperty -Filter "/system.applicationHost/applicationPools/add[@name='$appPoolName']/processModel" -PSPath 'IIS:\' -name loadUserProfile -value $true
+		CheckForErrors	
+	}
 }
 
 Function CreateSite($siteName, $physicalSitePath, $ipAddress, $enabelSsl, $port, $appPoolName, $certificateSubject){

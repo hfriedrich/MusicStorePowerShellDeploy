@@ -16,7 +16,7 @@
 	[ValidatePattern("\A\d{1,5}\Z")]
 	$port = $null,
 	
-	[parameter(Mandatory=$true, HelpMessage="Host name of the web application site")]
+	[parameter(Mandatory=$false, HelpMessage="Host name of the web application site")]
 	[ValidateNotNullOrEmpty()]
 	$hostName = $null,
 	
