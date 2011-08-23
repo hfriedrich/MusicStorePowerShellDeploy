@@ -16,7 +16,8 @@ $ravenPort = 82
 $ravenAppPool = 'RavenDbAppPool'
 $backupPath = 'c:\test\backup'
 $adfsCertificateFilePath = 'c:\adfsCertificate.cer'
-$adfsHostName = 'adfs.bekk.Fagdag2011.no'
+#$adfsHostName = 'adfs.bekk.Fagdag2011.no'
+$adfsHostName = Read-Host "Enter the URL of the ADFS-server"
 
 
 $command = '.\runDeploy.ps1 -webApplicationSiteName $siteName -physicalSitePath $physicalSitePath -ipAddress $ipAddress -port $port -hostName $hostName -appPoolName $appPoolName -certificateSubject $certificateSubject  -siteDeployPackagePath $siteDeployPackagePath -configSectionsToEncrypt $configSectionsToEncrypt -ravenSiteName $ravenSiteName -ravenSitePath $ravenPhysicalSitePath -ravenSiteIpAddress $ravenIpAddress -ravenSiteHostName $ravenHostName -ravenSitePort $ravenPort -ravenAppPoolName $ravenAppPool -siteBackupLocation $backupPath -adfsCertificateFilePath $adfsCertificateFilePath -adfsHostName $adfsHostName'
