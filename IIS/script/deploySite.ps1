@@ -2,7 +2,7 @@
 	$enabelSsl = ![string]::IsNullOrEmpty($certificateSubject)
 	CreateAppPool $appPoolName
 	SetAppPoolRuntimeVersion $appPoolName
-	SetAppPoolIdentity $appPoolName $appPoolUserAccountName $appPoolUserAccountPassword
+	SetAppPoolIdentity $appPoolName $appPoolUserAccountName $appPoolUserAccountPassword $enabelSsl
 	CreateSite $siteName $physicalSitePath $ipAddress $enabelSsl $port $appPoolName $certificateSubject
 	
 	.$MSDeploy -verb:sync -source:package=$siteDeployPackagePath -dest:auto -setParam:"kind='ProviderPath',scope='IisApp',value=$siteName"
