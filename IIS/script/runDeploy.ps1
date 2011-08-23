@@ -80,8 +80,7 @@
 . ./modifyAndEncryptConfiguration.ps1
 
 
-#$appPoolUserAccountName = ReadUserAccountNameFromConsole "Enter the application pool's user account name"
-$appPoolUserAccountName = 'AppPoolUser'
+$appPoolUserAccountName = ReadUserAccountNameFromConsole "Enter the application pool's user account name"
 $appPoolUserAccountPassword = ReadPasswordFromConsole "Enter the application pool's user account password"
 $siteDeployPackagePath = (Get-Item $siteDeployPackagePath).FullName
 $ravenSiteSourcePath = (Get-Item '.\RavenDb').FullName
